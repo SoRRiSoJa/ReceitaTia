@@ -17,30 +17,33 @@ namespace Produtos.Infra.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> Excluir(long id)
+        public async Task<bool> Excluir(long id)
         {
-            throw new NotImplementedException();
+            var query = @"update Marca set Excluido=true where MarcaId=@id";
+            var rows = await _session.Connection.ExecuteAsync(query, new { id }, _session.Transaction);
+            return rows > 0;
         }
 
         public async Task<Guid> Inserir(Marca marca)
         {
             var query = @"INSERT INTO Marca(MarcaId,Nome,DataAlteracao,DataCadastro,Excluido) VALUES(@MarcaId, @Nome, @DataAlteracao ,@DataCadastro, @Excluido)";
             var idMarca = Guid.NewGuid();
-            _ = await _session.Connection.ExecuteAsync(query, new { MarcaId = idMarca, marca.Nome, DataAlteracao = DateTime.Now, DataCadastro = DateTime.Now, Excluido = false }, _session.Transaction);
-            return idMarca;
+            var rows = await _session.Connection.ExecuteAsync(query, new { MarcaId = idMarca, marca.Nome, DataAlteracao = DateTime.Now, DataCadastro = DateTime.Now, Excluido = false }, _session.Transaction);
+            return rows > 0 ? idMarca : Guid.Empty;
         }
 
-        public Task<Marca> Obter(Guid id)
+        public async Task<Marca> Obter(Guid id)
         {
-            var query = @"SELECT * FROM Marca M
-                                           WHERE M.MarcaId = @id";
-            var result = _session.Connection.QuerySingleAsync<Marca>(query, new { id });
+            var query = @"SELECT * FROM Marca M WHERE M.MarcaId = @id";
+            var result = await _session.Connection.QueryFirstOrDefaultAsync<Marca>(query, new { id });
             return result;
         }
 
-        public Task<IEnumerable<Marca>> ObterTodos()
+        public async Task<IEnumerable<Marca>> ObterTodos()
         {
-            throw new NotImplementedException();
+            var query = @"SELECT * FROM Marca";
+            var result = await _session.Connection.QueryAsync<Marca>(query, null, _session.Transaction);
+            return result;
         }
     }
 }
