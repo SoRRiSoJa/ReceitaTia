@@ -10,7 +10,6 @@ namespace Produtos.Domain.Entities
         public string Descricao { get; set; }
         public string CEST { get; set; }
         public string NCM { get; set; }
-        public decimal PesoBruto { get; set; }
         public int QtdItensContidos { get; set; }
         public string CodigoBarras { get; set; }
         public int MarcaId { get; set; }

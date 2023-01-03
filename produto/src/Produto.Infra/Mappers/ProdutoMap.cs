@@ -13,7 +13,6 @@ namespace Produtos.Infra.Mappers
             Map((produto) => (produto).Descricao).ToColumn("Descricao");
             Map((produto) => (produto).CEST).ToColumn("CEST");
             Map((produto) => (produto).NCM).ToColumn("NCM");
-            Map((produto) => (produto).PesoBruto).ToColumn("PesoBruto");
             Map((produto) => (produto).QtdItensContidos).ToColumn("QtdItensContidos");
             Map((produto) => (produto).CodigoBarras).ToColumn("CodigoBarras");
             Map((produto) => (produto).Tipo).ToColumn("Tipo");
