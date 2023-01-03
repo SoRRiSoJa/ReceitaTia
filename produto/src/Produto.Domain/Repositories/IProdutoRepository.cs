@@ -6,7 +6,7 @@ namespace Produtos.Domain.Repositories
     {
         public Task<Produto> Obter(long id);
         public Task<IEnumerable<Produto>> ObterTodos();
-        public Task<Produto> Inserir(Produto produto);
+        public Task<Guid> Inserir(Produto produto);
         public Task<Produto> Atualizar(Produto produto);
 
         public Task<bool> Excluir(long id); 

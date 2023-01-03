@@ -7,7 +7,7 @@ namespace Produtos.Infra.Repositories
 {
     internal class MarcaRepository : IMarcaRepository
     {
-        private DbSession _session;
+        private readonly DbSession _session;
         public MarcaRepository(DbSession _session)
         {
             this._session = _session ?? throw new ArgumentNullException(nameof(_session));
