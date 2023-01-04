@@ -11,6 +11,7 @@ namespace Produtos.Infra.Config
             FluentMapper.Initialize(config =>
             {
                 config.AddMap(new MarcaMap());
+                config.AddMap(new ProdutoMap());
                 config.ForDommel();
             });
         }

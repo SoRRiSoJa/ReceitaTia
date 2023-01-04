@@ -1,9 +1,9 @@
-CREATE TABLE `Marca` (
-	`MarcaId` CHAR(36),
-	`Nome` VARCHAR(100),
-	`DataAlteracao` DATETIME(20),
-	`DataCadastro` DATETIME(20),
-	`Excluido` BOOLEAN(20),
-	UNIQUE KEY `iMarca` () USING BTREE,
-	PRIMARY KEY (`MarcaId`)
-) ENGINE=InnoDB;
+CREATE TABLE public.marca (
+	marcaid uuid NULL,
+	nome varchar(100) NULL,
+	dataalteracao timestamp with time zone NULL,
+	datacadastro timestamp with time zone NULL,
+	excluido bool NULL,
+	CONSTRAINT marca_pk PRIMARY KEY (marcaid)
+);
+CREATE UNIQUE INDEX marca_marcaid_idx ON public.marca (marcaid);

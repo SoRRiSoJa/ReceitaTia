@@ -12,7 +12,8 @@ namespace Produtos.Infra.Repositories
         {
             this._session = _session ?? throw new ArgumentNullException(nameof(_session));
         }
-        public Task<Produto> Atualizar(Produto produto)
+
+        public  Task<Produtos.Domain.Entities.Produto> Atualizar(Produtos.Domain.Entities.Produto produto)
         {
             throw new NotImplementedException();
         }
@@ -22,11 +23,11 @@ namespace Produtos.Infra.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<Guid> Inserir(Produto produto)
+        public async Task<Guid> Inserir(Produtos.Domain.Entities.Produto produto)
         {
 
-            var query = @"INSERT INTO Produto(ProdutoId, Nome, Descricao, CEST, NCM, QtdItensContidos, CodigoBarras, Tipo, DataAlteracao, DataCadastro, Excluido,	MarcaId, UnidadeMedida) 
-                                       VALUES(@ProdutoId, @Nome, @Descricao, @CEST, @NCM, @QtdItensContidos, @CodigoBarras, @Tipo, @DataAlteracao, @DataCadastro, @Excluido, @MarcaId, @UnidadeMedida)";
+            var query = @"INSERT INTO produto(produtoid, nome, descricao, cest, ncm, qtditenscontidos, codigobarras, tipo, dataalteracao, datacadastro, excluido, marcaId, unidademedida) 
+                                       VALUES(@produtoid, @nome, @descricao, @cest, @ncm, @qtditenscontidos, @codigobarras, @tipo, @dataalteracao, @datacadastro, @excluido, @marcaId, @unidademedida)";
             var idProduto = Guid.NewGuid();
             var rows = await _session.Connection.ExecuteAsync(query, new
             {
@@ -46,17 +47,37 @@ namespace Produtos.Infra.Repositories
             }, _session.Transaction);
             return rows > 0 ? idProduto : Guid.Empty;
         }
-        public async Task<Produto> Obter(long id)
+        public async Task<Produtos.Domain.Entities.Produto> Obter(Guid id)
         {
-            var query = @"SELECT * FROM Produto P WHERE P.ProdutoId = @id";
-            var result = await _session.Connection.QueryFirstOrDefaultAsync<Produto>(query, new { id });
-            return result;
+            var query = @"select * from produto pr left join marca ma on pr.marcaid = ma.marcaid where pr.produtoId = @id";
+
+            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) => {
+                produto.Marca = marca;
+                return produto;
+            }, splitOn: "marcaid", 
+            param: new
+            {
+                id
+            });
+            return result.First();
         }
 
-        public async Task<IEnumerable<Produto>> ObterTodos()
+        public async Task<IEnumerable<Produtos.Domain.Entities.Produto>> ObterTodos(Guid? marcaid)
         {
-            var query = @"SELECT * FROM Produto P left join Marca M on P.MarcaId=m.MarcaId";
-            var result = await _session.Connection.QueryAsync<Produto>(query, null, _session.Transaction);
+            var query = @"select * from produto pr left join marca ma on pr.marcaid = ma.marcaid ";
+
+            if (marcaid.HasValue)
+            {
+                query += "where pr.marcaid =@marcaid";
+            }
+            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) => {
+                produto.Marca = marca;
+                return produto;
+            }, splitOn: "marcaid", 
+            param: new
+            {
+                marcaid
+            });
             return result;
         }
     }
