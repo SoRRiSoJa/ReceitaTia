@@ -3,6 +3,6 @@
     public class MarcasDto
     {
         public Guid MarcaId { get; set; }
-        public string Nome { get; set; }
+        public string Nome { get; set; } = "";
     }
 }
