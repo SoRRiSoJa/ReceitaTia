@@ -8,19 +8,19 @@ namespace Produtos.Infra.Mappers
         public ProdutoMap()
         {
             ToTable("Produto");
-            Map((produto) => (produto).ProdutoId).ToColumn("ProdutoId").IsKey();
-            Map((produto) => (produto).Nome).ToColumn("Nome");
-            Map((produto) => (produto).Descricao).ToColumn("Descricao");
-            Map((produto) => (produto).CEST).ToColumn("CEST");
-            Map((produto) => (produto).NCM).ToColumn("NCM");
-            Map((produto) => (produto).QtdItensContidos).ToColumn("QtdItensContidos");
-            Map((produto) => (produto).CodigoBarras).ToColumn("CodigoBarras");
-            Map((produto) => (produto).Tipo).ToColumn("Tipo");
-            Map((produto) => (produto).DataAlteracao).ToColumn("DataAlteracao");
-            Map((produto) => (produto).DataCadastro).ToColumn("DataCadastro");
-            Map((produto) => (produto).Excluido).ToColumn("Excluido");
-            Map((produto) => (produto).MarcaId).ToColumn("MarcaId");
-            Map((produto) => (produto).UnidadeMedida).ToColumn("UnidadeMedida");
+            Map((produto) => (produto).ProdutoId).ToColumn("produtoid").IsKey();
+            Map((produto) => (produto).Nome).ToColumn("nome");
+            Map((produto) => (produto).Descricao).ToColumn("descricao");
+            Map((produto) => (produto).CEST).ToColumn("cest");
+            Map((produto) => (produto).NCM).ToColumn("ncm");
+            Map((produto) => (produto).QtdItensContidos).ToColumn("qtditenscontidos");
+            Map((produto) => (produto).CodigoBarras).ToColumn("codigobarras");
+            Map((produto) => (produto).Tipo).ToColumn("tipo");
+            Map((produto) => (produto).DataAlteracao).ToColumn("dataalteracao");
+            Map((produto) => (produto).DataCadastro).ToColumn("datacadastro");
+            Map((produto) => (produto).Excluido).ToColumn("excluido");
+            Map((produto) => (produto).MarcaId).ToColumn("marcaid");
+            Map((produto) => (produto).UnidadeMedida).ToColumn("unidademedida");
         }
     }
 }
