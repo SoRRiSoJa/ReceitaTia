@@ -18,13 +18,13 @@ namespace Produtos.Infra.Data
 
         public void Commit()
         {
-            _session.Transaction.Commit();
+            _session?.Transaction?.Commit();
             Dispose();
         }
 
         public void Rollback()
         {
-            _session.Transaction.Rollback();
+            _session?.Transaction?.Rollback();
             Dispose();
         }
 

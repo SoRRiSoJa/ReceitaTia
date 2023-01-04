@@ -58,7 +58,7 @@ namespace Produtos.Infra.Repositories
             {
                 id
             });
-            return result.FirstOrDefault();
+            return result.First();
         }
 
         public async Task<IEnumerable<Produto>> ObterTodos(Guid? marcaid)

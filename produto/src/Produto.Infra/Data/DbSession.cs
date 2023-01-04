@@ -8,7 +8,7 @@ namespace Produtos.Infra.Data
     {
         private readonly Guid _id = Guid.NewGuid();
         public IDbConnection Connection { get; }
-        public IDbTransaction Transaction { get; set; }
+        public IDbTransaction ?Transaction { get; set; }
         private readonly IConfiguration _configuracoes;
         public DbSession(IConfiguration _configuracoes)
         {
