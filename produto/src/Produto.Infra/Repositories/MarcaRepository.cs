@@ -19,14 +19,14 @@ namespace Produtos.Infra.Repositories
 
         public async Task<bool> Excluir(long id)
         {
-            var query = @"update Marca set Excluido=true where MarcaId=@id";
+            var query = @"update marca set Excluido=true where marcaid=@id";
             var rows = await _session.Connection.ExecuteAsync(query, new { id }, _session.Transaction);
             return rows > 0;
         }
 
         public async Task<Guid> Inserir(Marca marca)
         {
-            var query = @"INSERT INTO Marca(MarcaId,Nome,DataAlteracao,DataCadastro,Excluido) VALUES(@MarcaId, @Nome, @DataAlteracao ,@DataCadastro, @Excluido)";
+            var query = @"INSERT INTO marca(marcaid,nome,dataalteracao,datacadastro,excluido) VALUES(@marcaid, @nome, @dataalteracao ,@datacadastro, @excluido)";
             var idMarca = Guid.NewGuid();
             var rows = await _session.Connection.ExecuteAsync(query, new { MarcaId = idMarca, marca.Nome, DataAlteracao = DateTime.Now, DataCadastro = DateTime.Now, Excluido = false }, _session.Transaction);
             return rows > 0 ? idMarca : Guid.Empty;
@@ -34,14 +34,14 @@ namespace Produtos.Infra.Repositories
 
         public async Task<Marca> Obter(Guid id)
         {
-            var query = @"SELECT * FROM Marca M WHERE M.MarcaId = @id";
+            var query = @"SELECT * FROM marca M WHERE M.marcaid = @id";
             var result = await _session.Connection.QueryFirstOrDefaultAsync<Marca>(query, new { id });
             return result;
         }
 
         public async Task<IEnumerable<Marca>> ObterTodos()
         {
-            var query = @"SELECT * FROM Marca";
+            var query = @"SELECT * FROM marca";
             var result = await _session.Connection.QueryAsync<Marca>(query, null, _session.Transaction);
             return result;
         }
