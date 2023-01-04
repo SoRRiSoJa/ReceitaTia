@@ -77,7 +77,7 @@ namespace Produtos.Infra.Repositories
             {
                 marcaid
             });
-            return result.Distinct();
+            return result;
         }
     }
 }
