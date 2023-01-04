@@ -7,12 +7,12 @@ namespace Produtos.Infra.Mappers
     {
         public MarcaMap()
         {
-            ToTable("Marca");
-            Map((marca) => (marca).MarcaId).ToColumn("").IsKey();
-            Map((marca) => (marca).Nome).ToColumn("Nome");
-            Map((marca) => (marca).DataAlteracao).ToColumn("DataAlteracao");
-            Map((marca) => (marca).DataCadastro).ToColumn("DataCadastro");
-            Map((marca) => (marca).Excluido).ToColumn("Excluido");
+            ToTable("marca");
+            Map((marca) => (marca).MarcaId).ToColumn("marcaid").IsKey();
+            Map((marca) => (marca).Nome).ToColumn("nome");
+            Map((marca) => (marca).DataAlteracao).ToColumn("dataalteracao");
+            Map((marca) => (marca).DataCadastro).ToColumn("datacadastro");
+            Map((marca) => (marca).Excluido).ToColumn("excluido");
         }
     }
 }
