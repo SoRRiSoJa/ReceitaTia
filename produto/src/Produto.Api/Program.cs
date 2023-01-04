@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Hosting;
 using Produtos.Infra.Extensions;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddUoW();
 builder.Services.AddRepositories();
+builder.Services.AddMediatRApi();
+
 
 var app = builder.Build();
 
