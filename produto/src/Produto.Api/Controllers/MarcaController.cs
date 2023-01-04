@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Produto.Application.Commands.Marca;
+using Produto.Application.DTOs;
+using Produto.Application.Queries.MarcaQueries;
 
 namespace Produtos.Api.Controllers
 {
@@ -20,6 +22,16 @@ namespace Produtos.Api.Controllers
         {
             var marcaId = await _mediator.Send(marca);
             return marcaId;
+        }
+        [HttpGet]
+        public async Task<IEnumerable<MarcasDto>> ListarTodos()
+        {
+            return await _mediator.Send(new ObterTodasAsMarcasQuery());
+        }
+        [HttpGet("{id}")]
+        public async Task<MarcasDto> Obter(Guid id)
+        {
+            return await _mediator.Send(new ObterMarcaPorIdQuery() { MarcaId=id});
         }
     }
 }
