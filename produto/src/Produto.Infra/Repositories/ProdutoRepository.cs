@@ -12,7 +12,8 @@ namespace Produtos.Infra.Repositories
         {
             this._session = _session ?? throw new ArgumentNullException(nameof(_session));
         }
-        public Task<Produto> Atualizar(Produto produto)
+
+        public  Task<Produtos.Domain.Entities.Produto> Atualizar(Produtos.Domain.Entities.Produto produto)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +23,7 @@ namespace Produtos.Infra.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<Guid> Inserir(Produto produto)
+        public async Task<Guid> Inserir(Produtos.Domain.Entities.Produto produto)
         {
 
             var query = @"INSERT INTO produto(produtoid, nome, descricao, cest, ncm, qtditenscontidos, codigobarras, tipo, dataalteracao, datacadastro, excluido, marcaId, unidademedida) 
@@ -46,11 +47,11 @@ namespace Produtos.Infra.Repositories
             }, _session.Transaction);
             return rows > 0 ? idProduto : Guid.Empty;
         }
-        public async Task<Produto> Obter(Guid id)
+        public async Task<Produtos.Domain.Entities.Produto> Obter(Guid id)
         {
             var query = @"select * from produto pr left join marca ma on pr.marcaid = ma.marcaid where pr.produtoId = @id";
 
-            var result = await _session.Connection.QueryAsync<Produto, Marca, Produto>(query, (produto, marca) => {
+            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) => {
                 produto.Marca = marca;
                 return produto;
             }, splitOn: "marcaid", 
@@ -61,7 +62,7 @@ namespace Produtos.Infra.Repositories
             return result.First();
         }
 
-        public async Task<IEnumerable<Produto>> ObterTodos(Guid? marcaid)
+        public async Task<IEnumerable<Produtos.Domain.Entities.Produto>> ObterTodos(Guid? marcaid)
         {
             var query = @"select * from produto pr left join marca ma on pr.marcaid = ma.marcaid ";
 
@@ -69,7 +70,7 @@ namespace Produtos.Infra.Repositories
             {
                 query += "where pr.marcaid =@marcaid";
             }
-            var result = await _session.Connection.QueryAsync<Produto, Marca, Produto>(query, (produto, marca) => {
+            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) => {
                 produto.Marca = marca;
                 return produto;
             }, splitOn: "marcaid", 

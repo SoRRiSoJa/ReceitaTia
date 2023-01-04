@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Produtos.Domain.Entities;
-using Produtos.Domain.Repositories;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Produtos.Api.Controllers
 {
@@ -8,30 +7,27 @@ namespace Produtos.Api.Controllers
     [Route("[controller]")]
     public class ProdutoController : ControllerBase
     {
-        private readonly IProdutoRepository _produtoRepository;
+        private readonly IMediator _mediator;
 
-        public ProdutoController(IProdutoRepository _produtoRepository)
+        public ProdutoController(IMediator _mediator)
         {
-            this._produtoRepository = _produtoRepository ?? throw new ArgumentNullException(nameof(_produtoRepository));
+            this._mediator = _mediator ?? throw new ArgumentNullException(nameof(_mediator));
         }
         
         [HttpGet]
-        public async Task<IEnumerable<Produto>> ListarTodos()
+        public async Task<IEnumerable<Produtos.Domain.Entities.Produto>> ListarTodos()
         {
-            return  await _produtoRepository.ObterTodos(null);
+            return  null;
         }
         [HttpGet("{id}")]
-        public async Task<Produto> Obter(Guid id)
+        public async Task<Produtos.Domain.Entities.Produto> Obter(Guid id)
         {
-            var produto = await _produtoRepository.Obter(id);
-            return produto;
+            return null;
         }
         [HttpPost]
-        public async Task<Produto> Inserir([FromBody] Produto produto)
+        public async Task<Produtos.Domain.Entities.Produto> Inserir([FromBody] Produtos.Domain.Entities.Produto produto)
         {
-            //Produto prod = new Produto() { Nome="Sprite lata",Descricao="Refrigerante Sprite Lata 320ml",CEST= "03.011.00",NCM= "2202.10.00", QtdItensContidos=1,CodigoBarras= "7894900010015", Tipo=ETipoProduto.MERCADORIA,MarcaId=new Guid("749b0477-379e-476c-86a7-b4f2e5db7ec3") };
-            produto.ProdutoId=await _produtoRepository.Inserir(produto);
-            return produto;
+            return null;
         }
 
     }

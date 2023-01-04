@@ -1,9 +1,8 @@
 ﻿using Dapper.FluentMap.Dommel.Mapping;
-using Produtos.Domain.Entities;
 
 namespace Produtos.Infra.Mappers
 {
-    public  class ProdutoMap : DommelEntityMap<Produto>
+    public  class ProdutoMap : DommelEntityMap<Produtos.Domain.Entities.Produto>
     {
         public ProdutoMap()
         {
