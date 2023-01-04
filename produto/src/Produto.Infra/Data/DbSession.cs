@@ -13,7 +13,7 @@ namespace Produtos.Infra.Data
         public DbSession(IConfiguration _configuracoes)
         {
             this._configuracoes = _configuracoes ?? throw new ArgumentNullException(nameof(_configuracoes));
-            Connection = new NpgsqlConnection(_configuracoes.GetConnectionString("Receita"));    
+            Connection = new NpgsqlConnection(_configuracoes.GetConnectionString("Receita"));
             Connection.Open();
         }
 

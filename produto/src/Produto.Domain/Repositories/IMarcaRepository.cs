@@ -8,8 +8,8 @@ namespace Produtos.Domain.Repositories
         public Task<IEnumerable<Marca>> ObterTodos();
         public Task<Guid> Inserir(Marca marca);
         public Task<Marca> Atualizar(Marca marca);
-        
-        public Task<bool> Excluir(long id); 
-        
+
+        public Task<bool> Excluir(long id);
+
     }
 }

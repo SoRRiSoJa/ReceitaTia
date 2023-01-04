@@ -3,7 +3,7 @@ using Produtos.Domain.Enums;
 
 namespace Produto.Application.Commands.ProdutoCommands
 {
-    public class AdcionarProdutoCommand : IRequest<Guid> 
+    public class AdcionarProdutoCommand : IRequest<Guid>
     {
         public string Nome { get; set; } = "";
         public string Descricao { get; set; } = "";

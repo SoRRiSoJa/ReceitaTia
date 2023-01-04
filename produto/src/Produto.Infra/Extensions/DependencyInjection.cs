@@ -1,16 +1,16 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation.AspNetCore;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Produto.Application.Commands.Marca;
+using Produto.Application.Commands.ProdutoCommands;
+using Produto.Application.Queries.MarcaQueries;
+using Produto.Application.Queries.ProdutosQueries;
+using Produto.Application.Validations;
 using Produtos.Domain.Repositories;
 using Produtos.Infra.Abstractions;
 using Produtos.Infra.Data;
 using Produtos.Infra.Repositories;
-using MediatR;
-using Produto.Application.Commands.Marca;
-using Produto.Application.Commands.ProdutoCommands;
-using FluentValidation.AspNetCore;
 using System.Globalization;
-using Produto.Application.Validations;
-using Produto.Application.Queries.MarcaQueries;
-using Produto.Application.Queries.ProdutosQueries;
 
 namespace Produtos.Infra.Extensions
 {
@@ -30,7 +30,7 @@ namespace Produtos.Infra.Extensions
         {
             services.AddMediatR(typeof(AdcionarMarcaCommand));
             services.AddMediatR(typeof(AdcionarProdutoCommand));
-            
+
             services.AddMediatR(typeof(ObterMarcaPorIdQuery));
             services.AddMediatR(typeof(ObterTodasAsMarcasQuery));
             services.AddMediatR(typeof(ObterProdutoPorIdQuery));

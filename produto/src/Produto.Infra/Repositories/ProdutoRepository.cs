@@ -13,7 +13,7 @@ namespace Produtos.Infra.Repositories
             this._session = _session ?? throw new ArgumentNullException(nameof(_session));
         }
 
-        public  Task<Produtos.Domain.Entities.Produto> Atualizar(Produtos.Domain.Entities.Produto produto)
+        public Task<Produtos.Domain.Entities.Produto> Atualizar(Produtos.Domain.Entities.Produto produto)
         {
             throw new NotImplementedException();
         }
@@ -51,10 +51,11 @@ namespace Produtos.Infra.Repositories
         {
             var query = @"select * from produto pr left join marca ma on pr.marcaid = ma.marcaid where pr.produtoId = @id";
 
-            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) => {
+            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) =>
+            {
                 produto.Marca = marca;
                 return produto;
-            }, splitOn: "marcaid", 
+            }, splitOn: "marcaid",
             param: new
             {
                 id
@@ -70,10 +71,11 @@ namespace Produtos.Infra.Repositories
             {
                 query += "where pr.marcaid =@marcaid";
             }
-            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) => {
+            var result = await _session.Connection.QueryAsync<Produtos.Domain.Entities.Produto, Marca, Produtos.Domain.Entities.Produto>(query, (produto, marca) =>
+            {
                 produto.Marca = marca;
                 return produto;
-            }, splitOn: "marcaid", 
+            }, splitOn: "marcaid",
             param: new
             {
                 marcaid
