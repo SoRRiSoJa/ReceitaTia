@@ -5,6 +5,7 @@ using Produtos.Infra.Data;
 using Produtos.Infra.Repositories;
 using MediatR;
 using Produto.Application.Commands.Marca;
+using Produto.Application.Commands.ProdutoCommands;
 
 namespace Produtos.Infra.Extensions
 {
@@ -23,6 +24,7 @@ namespace Produtos.Infra.Extensions
         public static void AddMediatRApi(this IServiceCollection services)
         {
             services.AddMediatR(typeof(AdcionarMarcaCommand));
+            services.AddMediatR(typeof(AdcionarProdutoCommand));
         }
     }
 }

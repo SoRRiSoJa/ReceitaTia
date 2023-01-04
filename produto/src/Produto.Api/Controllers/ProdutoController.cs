@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Produto.Application.Commands.ProdutoCommands;
 
 namespace Produtos.Api.Controllers
 {
@@ -25,9 +26,10 @@ namespace Produtos.Api.Controllers
             return null;
         }
         [HttpPost]
-        public async Task<Produtos.Domain.Entities.Produto> Inserir([FromBody] Produtos.Domain.Entities.Produto produto)
+        public async Task<Guid> Inserir([FromBody] AdcionarProdutoCommand produto)
         {
-            return null;
+            var produtoId = await _mediator.Send(produto);
+            return produtoId;
         }
 
     }
