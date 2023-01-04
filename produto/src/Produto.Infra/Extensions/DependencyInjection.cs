@@ -5,6 +5,12 @@ using Produtos.Infra.Data;
 using Produtos.Infra.Repositories;
 using MediatR;
 using Produto.Application.Commands.Marca;
+using Produto.Application.Commands.ProdutoCommands;
+using FluentValidation.AspNetCore;
+using System.Globalization;
+using Produto.Application.Validations;
+using Produto.Application.Queries.MarcaQueries;
+using Produto.Application.Queries.ProdutosQueries;
 
 namespace Produtos.Infra.Extensions
 {
@@ -23,6 +29,41 @@ namespace Produtos.Infra.Extensions
         public static void AddMediatRApi(this IServiceCollection services)
         {
             services.AddMediatR(typeof(AdcionarMarcaCommand));
+            services.AddMediatR(typeof(AdcionarProdutoCommand));
+            
+            services.AddMediatR(typeof(ObterMarcaPorIdQuery));
+            services.AddMediatR(typeof(ObterTodasAsMarcasQuery));
+            services.AddMediatR(typeof(ObterProdutoPorIdQuery));
+            services.AddMediatR(typeof(ObterProdutosPorMarcaQuery));
+            services.AddMediatR(typeof(ObterTodosOsProdutosQuery));
+        }
+
+        [Obsolete]
+        public static void AddValidators(this IServiceCollection services)
+        {
+            services.AddFluentValidation(typeof(AdcionarMarcaCommandValidator));
+            services.AddFluentValidation(typeof(AdcionarProdutoCommandValidator));
+        }
+        [Obsolete]
+        public static IServiceCollection AddFluentValidation(this IServiceCollection services, Type assemblyContainingValidators)
+        {
+            _ = services.AddFluentValidation(conf =>
+            {
+                conf.RegisterValidatorsFromAssemblyContaining(assemblyContainingValidators);
+                conf.AutomaticValidationEnabled = false;
+                conf.ValidatorOptions.LanguageManager.Culture = new CultureInfo("pt-BR");
+            });
+
+            return services;
+        }
+        public static IServiceCollection AddAutoMapperApi(this IServiceCollection services, Type assemblyContainingMappers)
+        {
+            services.AddAutoMapper(expression =>
+            {
+                expression.AllowNullCollections = true;
+            }, assemblyContainingMappers);
+
+            return services;
         }
     }
 }

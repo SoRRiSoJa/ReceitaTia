@@ -1,5 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Produto.Application.Commands.ProdutoCommands;
+using Produto.Application.DTOs;
+using Produto.Application.Queries.ProdutosQueries;
 
 namespace Produtos.Api.Controllers
 {
@@ -15,19 +18,20 @@ namespace Produtos.Api.Controllers
         }
         
         [HttpGet]
-        public async Task<IEnumerable<Produtos.Domain.Entities.Produto>> ListarTodos()
+        public async Task<IEnumerable<ProdutosDto>> ListarTodos()
         {
-            return  null;
+            return await _mediator.Send(new ObterTodosOsProdutosQuery());
         }
         [HttpGet("{id}")]
-        public async Task<Produtos.Domain.Entities.Produto> Obter(Guid id)
+        public async Task<ProdutosDto> Obter(Guid id)
         {
-            return null;
+            return await _mediator.Send(new ObterProdutoPorIdQuery() { ProdutoId=id});
         }
         [HttpPost]
-        public async Task<Produtos.Domain.Entities.Produto> Inserir([FromBody] Produtos.Domain.Entities.Produto produto)
+        public async Task<Guid> Inserir([FromBody] AdcionarProdutoCommand produto)
         {
-            return null;
+            var produtoId = await _mediator.Send(produto);
+            return produtoId;
         }
 
     }
