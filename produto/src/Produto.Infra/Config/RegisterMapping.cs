@@ -12,6 +12,8 @@ namespace Produtos.Infra.Config
             {
                 config.AddMap(new MarcaMap());
                 config.AddMap(new ProdutoMap());
+                config.AddMap(new PrePreparoMap());
+                config.AddMap(new ProdutoPrePreparoMap());
                 config.ForDommel();
             });
         }
