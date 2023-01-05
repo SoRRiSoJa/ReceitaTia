@@ -9,7 +9,7 @@ namespace Produtos.Domain.Entities
         public Produto Produto { get; set; }
         public Produto ProdutoId { get; set; }
         public decimal Quantidade { get; set; }
-        public EUnidadeMedida  UnidadeMedida { get; set; }
-      
+        public EUnidadeMedida UnidadeMedida { get; set; }
+
     }
 }

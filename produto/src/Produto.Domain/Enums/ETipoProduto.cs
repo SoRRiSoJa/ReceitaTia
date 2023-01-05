@@ -1,6 +1,6 @@
 ﻿namespace Produtos.Domain.Enums
 {
-    public  enum ETipoProduto
+    public enum ETipoProduto
     {
         INSUMO = 1,
         MERCADORIA = 2,

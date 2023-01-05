@@ -9,6 +9,6 @@ namespace Produtos.Domain.Repositories
         public Task<Guid> Inserir(Produto produto);
         public Task<Produto> Atualizar(Produto produto);
 
-        public Task<bool> Excluir(long id); 
+        public Task<bool> Excluir(long id);
     }
 }

@@ -1,4 +1,6 @@
-﻿using Produtos.Infra.Abstractions;
+﻿
+
+using Produtos.Domain.Interfaces;
 
 namespace Produtos.Infra.Data
 {

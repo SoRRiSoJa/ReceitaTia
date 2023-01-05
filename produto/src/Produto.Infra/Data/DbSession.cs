@@ -1,19 +1,15 @@
-﻿using Microsoft.Extensions.Configuration;
-using Npgsql;
-using System.Data;
+﻿using System.Data;
+using System.Data.Common;
 
 namespace Produtos.Infra.Data
 {
     public sealed class DbSession : IDisposable
     {
-        private readonly Guid _id = Guid.NewGuid();
         public IDbConnection Connection { get; }
-        public IDbTransaction Transaction { get; set; }
-        private readonly IConfiguration _configuracoes;
-        public DbSession(IConfiguration _configuracoes)
+        public IDbTransaction? Transaction { get; set; }
+        public DbSession(DbConnection connection)
         {
-            this._configuracoes = _configuracoes ?? throw new ArgumentNullException(nameof(_configuracoes));
-            Connection = new NpgsqlConnection(_configuracoes.GetConnectionString("Receita"));    
+            this.Connection = connection ?? throw new ArgumentNullException(nameof(connection));
             Connection.Open();
         }
 

@@ -16,7 +16,7 @@ namespace Produtos.Api.Controllers
         {
             this._mediator = _mediator ?? throw new ArgumentNullException(nameof(_mediator));
         }
-        
+
         [HttpGet]
         public async Task<IEnumerable<ProdutosDto>> ListarTodos()
         {
@@ -25,7 +25,7 @@ namespace Produtos.Api.Controllers
         [HttpGet("{id}")]
         public async Task<ProdutosDto> Obter(Guid id)
         {
-            return await _mediator.Send(new ObterProdutoPorIdQuery() { ProdutoId=id});
+            return await _mediator.Send(new ObterProdutoPorIdQuery() { ProdutoId = id });
         }
         [HttpPost]
         public async Task<Guid> Inserir([FromBody] AdcionarProdutoCommand produto)

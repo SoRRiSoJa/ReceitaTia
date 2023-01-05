@@ -2,13 +2,12 @@
 using FluentValidation;
 using MediatR;
 using Produtos.Domain.Repositories;
-using System.Reflection;
 
 namespace Produto.Application.Commands.Marca
 {
     public class AdicionarMarcaCommandHandler : IRequestHandler<AdcionarMarcaCommand, Guid>
     {
-        
+
         private readonly IMapper _mapper;
         private readonly IMarcaRepository _marcaRepository;
         private readonly IValidator<AdcionarMarcaCommand> _validator;
@@ -22,7 +21,7 @@ namespace Produto.Application.Commands.Marca
         public async Task<Guid> Handle(AdcionarMarcaCommand request, CancellationToken cancellationToken)
         {
             var validation = await _validator.ValidateAsync(request);
-            
+
             if (!validation.IsValid)
             {
                 throw new ValidationException(validation.Errors);

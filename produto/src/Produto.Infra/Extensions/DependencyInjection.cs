@@ -1,21 +1,32 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Produtos.Domain.Repositories;
-using Produtos.Infra.Abstractions;
-using Produtos.Infra.Data;
-using Produtos.Infra.Repositories;
+﻿using FluentValidation.AspNetCore;
 using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 using Produto.Application.Commands.Marca;
 using Produto.Application.Commands.ProdutoCommands;
-using FluentValidation.AspNetCore;
-using System.Globalization;
-using Produto.Application.Validations;
 using Produto.Application.Queries.MarcaQueries;
 using Produto.Application.Queries.ProdutosQueries;
+using Produto.Application.Validations;
+using Produtos.Domain.Interfaces;
+using Produtos.Domain.Repositories;
+using Produtos.Infra.Data;
+using Produtos.Infra.Repositories;
+using System.Data.Common;
+using System.Globalization;
 
 namespace Produtos.Infra.Extensions
 {
     public static class DependencyInjection
     {
+        public static void AddDapperSqlServer(this IServiceCollection services, string connectionString)
+        {
+            services.AddScoped<DbConnection>(provider =>
+            {
+                return new NpgsqlConnection(connectionString);
+            });
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+        }
         public static void AddUoW(this IServiceCollection services)
         {
             services.AddScoped<DbSession>();
@@ -30,7 +41,7 @@ namespace Produtos.Infra.Extensions
         {
             services.AddMediatR(typeof(AdcionarMarcaCommand));
             services.AddMediatR(typeof(AdcionarProdutoCommand));
-            
+
             services.AddMediatR(typeof(ObterMarcaPorIdQuery));
             services.AddMediatR(typeof(ObterTodasAsMarcasQuery));
             services.AddMediatR(typeof(ObterProdutoPorIdQuery));

@@ -5,7 +5,7 @@ using Produtos.Infra.Data;
 
 namespace Produtos.Infra.Repositories
 {
-    internal class MarcaRepository : IMarcaRepository
+    public class MarcaRepository : IMarcaRepository
     {
         private readonly DbSession _session;
         public MarcaRepository(DbSession _session)

@@ -2,7 +2,7 @@
 
 namespace Produtos.Infra.Mappers
 {
-    public  class ProdutoMap : DommelEntityMap<Produtos.Domain.Entities.Produto>
+    public class ProdutoMap : DommelEntityMap<Produtos.Domain.Entities.Produto>
     {
         public ProdutoMap()
         {

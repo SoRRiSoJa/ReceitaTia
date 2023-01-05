@@ -1,6 +1,6 @@
-﻿namespace Produtos.Infra.Abstractions
+﻿namespace Produtos.Domain.Interfaces
 {
-    internal interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
         void BeginTransaction();
         void Commit();

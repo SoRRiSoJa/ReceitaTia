@@ -9,10 +9,10 @@ namespace Produto.Application.Mappers
     {
         public MarcaMapper()
         {
-            CreateMap<Marca,MarcasDto>().ReverseMap();
-            CreateMap<AdcionarMarcaCommand,Marca>().ReverseMap();
+            CreateMap<Marca, MarcasDto>().ReverseMap();
+            CreateMap<AdcionarMarcaCommand, Marca>().ReverseMap();
         }
     }
-    
-    
+
+
 }

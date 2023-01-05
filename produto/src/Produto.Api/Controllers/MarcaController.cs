@@ -31,7 +31,7 @@ namespace Produtos.Api.Controllers
         [HttpGet("{id}")]
         public async Task<MarcasDto> Obter(Guid id)
         {
-            return await _mediator.Send(new ObterMarcaPorIdQuery() { MarcaId=id});
+            return await _mediator.Send(new ObterMarcaPorIdQuery() { MarcaId = id });
         }
     }
 }
