@@ -4,7 +4,7 @@ namespace Produtos.Domain.Entities
 {
     public class Marca : Entity
     {
-        public Guid MarcaId { get; set; }
+        public Guid MarcaId { get; set; } = Guid.NewGuid();
         public string Nome { get; set; }
     }
 }
