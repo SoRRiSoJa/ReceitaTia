@@ -4,8 +4,8 @@ namespace Produtos.Domain.Entities
 {
     public class PrePreparo : Entity
     {
-        public Guid PrePreparoId { get; set; }
-        public decimal Reindimento { get; set; }
+        public Guid PrePreparoId { get; set; } = new Guid();
+        public decimal Rendimento { get; set; }
         public Guid ProdutoId { get; set; }
         public Produto Produto { get; set; }
         public ICollection<ProdutoPrePreparo> Produtos { get; set; }

@@ -18,7 +18,7 @@ namespace Produtos.Infra.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> Excluir(long id)
+        public Task<bool> Excluir(Guid id)
         {
             throw new NotImplementedException();
         }

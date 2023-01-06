@@ -10,7 +10,7 @@ namespace Produtos.Infra.Mappers
             ToTable("prepreparo");
             Map((produtoprepreparo) => (produtoprepreparo).PrePreparoId).ToColumn("prepreparoid").IsKey();
             Map((produtoprepreparo) => (produtoprepreparo).ProdutoId).ToColumn("produtoid");
-            Map((produtoprepreparo) => (produtoprepreparo).Reindimento).ToColumn("quantidade");
+            Map((produtoprepreparo) => (produtoprepreparo).Rendimento).ToColumn("rendimento");
             Map((produtoprepreparo) => (produtoprepreparo).DataAlteracao).ToColumn("dataalteracao");
             Map((produtoprepreparo) => (produtoprepreparo).DataCadastro).ToColumn("datacadastro");
             Map((produtoprepreparo) => (produtoprepreparo).Excluido).ToColumn("excluido");

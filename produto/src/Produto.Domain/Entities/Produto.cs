@@ -5,7 +5,7 @@ namespace Produtos.Domain.Entities
 {
     public class Produto : Entity
     {
-        public Guid ProdutoId { get; set; }
+        public Guid ProdutoId { get; set; }= new Guid();
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string CEST { get; set; }

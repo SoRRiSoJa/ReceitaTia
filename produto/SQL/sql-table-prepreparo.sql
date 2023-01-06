@@ -5,7 +5,6 @@ CREATE TABLE public.prepreparo (
 	dataalteracao timestamptz NULL,
 	datacadastro timestamptz NULL,
 	excluido bool NULL,
-	unidademedida int4 NULL,
 	CONSTRAINT prepreparo_pk PRIMARY KEY (prepreparoid)
 );
 CREATE UNIQUE INDEX prepreparo_prepreparoid_idx ON public.prepreparo USING btree (prepreparoid);

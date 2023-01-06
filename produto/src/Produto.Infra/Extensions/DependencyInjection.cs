@@ -36,6 +36,7 @@ namespace Produtos.Infra.Extensions
         {
             services.AddTransient<IProdutoRepository, ProdutoRepository>();
             services.AddTransient<IMarcaRepository, MarcaRepository>();
+            services.AddTransient<IPrePreparoRepository, PrePreparoRepository>();
         }
         public static void AddMediatRApi(this IServiceCollection services)
         {
