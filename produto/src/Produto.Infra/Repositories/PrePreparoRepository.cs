@@ -62,15 +62,13 @@ namespace Produtos.Infra.Repositories
             var result = await _session.Connection.QueryAsync<PrePreparo, Produtos.Domain.Entities.Produto, ProdutoPrePreparo, Produtos.Domain.Entities.Produto, PrePreparo>(query,
                 (prePreparo, produto, produtoPrepreparo, produtoDoPrepreparo) =>
                 {
-                    PrePreparo prePreparoEntry;
-                    if (!prePreparoDictionary.TryGetValue(prePreparo.PrePreparoId, out prePreparoEntry))
+                    if (!prePreparoDictionary.TryGetValue(prePreparo.PrePreparoId, out var prePreparoEntry))
                     {
                         prePreparoEntry = prePreparo;
                         prePreparo.Produto = produto;
                         prePreparoDictionary.Add(prePreparoEntry.PrePreparoId, prePreparoEntry);
                     }
-                    ProdutoPrePreparo produtoPrePreparoEntry;
-                    if (!produtoPrePreparoDictionary.TryGetValue(produtoPrepreparo.ProdutoPrePreparoId, out produtoPrePreparoEntry))
+                    if (!produtoPrePreparoDictionary.TryGetValue(produtoPrepreparo.ProdutoPrePreparoId, out var produtoPrePreparoEntry))
                     {
                         produtoPrePreparoEntry = produtoPrepreparo;
                         produtoPrePreparoEntry.Produto = produtoDoPrepreparo;
@@ -80,7 +78,7 @@ namespace Produtos.Infra.Repositories
                         produtoPrePreparoDictionary.Add(produtoPrePreparoEntry.ProdutoPrePreparoId, produtoPrePreparoEntry);
                     }
                     return prePreparoEntry;
-                }, splitOn: "produtoprepreparoid,produtoid,produtoid", param: new { prepreparoid=id });
+                }, splitOn: "produtoid, produtoprepreparoid,produtoid", param: new { prepreparoid=id });
             return result.Distinct().First();
         }
         public async Task<IEnumerable<PrePreparo>> ObterTodos(Guid? prePreparo)
@@ -98,15 +96,13 @@ namespace Produtos.Infra.Repositories
             var result = await _session.Connection.QueryAsync<PrePreparo, Produtos.Domain.Entities.Produto, ProdutoPrePreparo, Produtos.Domain.Entities.Produto, PrePreparo>(query,
                 (prePreparo, produto, produtoPrepreparo, produtoDoPrepreparo) =>
                 {
-                    PrePreparo prePreparoEntry;
-                    if (!prePreparoDictionary.TryGetValue(prePreparo.PrePreparoId, out prePreparoEntry))
+                    if (!prePreparoDictionary.TryGetValue(prePreparo.PrePreparoId, out var prePreparoEntry))
                     {
                         prePreparoEntry = prePreparo;
                         prePreparo.Produto = produto;
                         prePreparoDictionary.Add(prePreparoEntry.PrePreparoId, prePreparoEntry);
                     }
-                    ProdutoPrePreparo produtoPrePreparoEntry;
-                    if (!produtoPrePreparoDictionary.TryGetValue(produtoPrepreparo.ProdutoPrePreparoId, out produtoPrePreparoEntry))
+                    if (!produtoPrePreparoDictionary.TryGetValue(produtoPrepreparo.ProdutoPrePreparoId, out var produtoPrePreparoEntry))
                     {
                         produtoPrePreparoEntry = produtoPrepreparo;
                         produtoPrePreparoEntry.Produto = produtoDoPrepreparo;
@@ -116,7 +112,7 @@ namespace Produtos.Infra.Repositories
                         produtoPrePreparoDictionary.Add(produtoPrePreparoEntry.ProdutoPrePreparoId, produtoPrePreparoEntry);
                     }
                     return prePreparoEntry;
-                }, splitOn: "produtoprepreparoid,produtoid,produtoid");
+                }, splitOn: "produtoid,produtoprepreparoid,produtoid");
             return result.Distinct();
 
         }
