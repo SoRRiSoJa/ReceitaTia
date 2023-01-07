@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\Authentication.Api.csproj": {}
+    "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\authentication.Api.csproj": {}
   },
   "projects": {
-    "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\Authentication.Api.csproj": {
+    "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\authentication.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\Authentication.Api.csproj",
-        "projectName": "Authentication.Api",
-        "projectPath": "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\Authentication.Api.csproj",
+        "projectUniqueName": "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\authentication.Api.csproj",
+        "projectName": "authentication.Api",
+        "projectPath": "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\authentication.Api.csproj",
         "packagesPath": "C:\\Users\\João André Martins\\.nuget\\packages\\",
         "outputPath": "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\obj\\",
         "projectStyle": "PackageReference",
@@ -47,6 +47,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.1, )"

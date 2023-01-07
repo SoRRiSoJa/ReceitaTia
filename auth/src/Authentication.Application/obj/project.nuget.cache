@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h8u6YtjMmSracJ5jeIzTEl7IfuUNu8mORcKU01/EO+skNL2pXmqDPakbv6FrTEewimBNGbngYbStdjqbC3wuGA==",
+  "dgSpecHash": "i/SMNdrgH5t1QstaMAz8LSLlU3hS0aTLG8aMbbQMBIdAikDY51dg+rHYZxj9QHu02I7LpD4hTUzZbij12x5I0w==",
   "success": true,
-  "projectFilePath": "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\Authentication.Application.csproj",
+  "projectFilePath": "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\authentication.Application.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

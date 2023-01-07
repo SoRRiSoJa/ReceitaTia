@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\Authentication.Application.csproj": {}
+    "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\authentication.Application.csproj": {}
   },
   "projects": {
-    "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\Authentication.Application.csproj": {
+    "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\authentication.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\Authentication.Application.csproj",
-        "projectName": "Authentication.Application",
-        "projectPath": "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\Authentication.Application.csproj",
+        "projectUniqueName": "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\authentication.Application.csproj",
+        "projectName": "authentication.Application",
+        "projectPath": "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\authentication.Application.csproj",
         "packagesPath": "C:\\Users\\João André Martins\\.nuget\\packages\\",
         "outputPath": "C:\\ReceitaTia\\auth\\src\\Authentication.Application\\obj\\",
         "projectStyle": "PackageReference",

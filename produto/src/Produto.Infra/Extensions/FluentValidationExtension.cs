@@ -5,7 +5,7 @@ namespace Produtos.Infra.Extensions
 {
     public static class FluentValidationExtension
     {
-        public static List<MessageResult> GetErrors(this ValidationResult result)
+        public static List<MessageResult>? GetErrors(this ValidationResult result)
         {
             return result.Errors?.Select(error => new MessageResult(error.PropertyName, error.ErrorMessage)).ToList();
         }
