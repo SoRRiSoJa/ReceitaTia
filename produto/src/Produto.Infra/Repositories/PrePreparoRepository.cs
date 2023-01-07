@@ -81,7 +81,7 @@ namespace Produtos.Infra.Repositories
                 }, splitOn: "produtoid, produtoprepreparoid,produtoid", param: new { prepreparoid=id });
             return result.Distinct().First();
         }
-        public async Task<IEnumerable<PrePreparo>> ObterTodos(Guid? prePreparo)
+        public async Task<IEnumerable<PrePreparo>> ObterTodos()
         {
             var query = @"select pre.*,pro.*,ppre.*,propre.* from prepreparo pre 
                                 inner join produto pro on pro.produtoid = pre.produtoid 
@@ -107,8 +107,6 @@ namespace Produtos.Infra.Repositories
                         produtoPrePreparoEntry = produtoPrepreparo;
                         produtoPrePreparoEntry.Produto = produtoDoPrepreparo;
                         prePreparoEntry.Produtos.Add(produtoPrePreparoEntry);
-
-
                         produtoPrePreparoDictionary.Add(produtoPrePreparoEntry.ProdutoPrePreparoId, produtoPrePreparoEntry);
                     }
                     return prePreparoEntry;

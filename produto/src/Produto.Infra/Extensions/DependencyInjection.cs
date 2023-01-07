@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
 using Produto.Application.Commands.Marca;
+using Produto.Application.Commands.PrePreparoCommands;
 using Produto.Application.Commands.ProdutoCommands;
 using Produto.Application.Queries.MarcaQueries;
 using Produto.Application.Queries.ProdutosQueries;
@@ -42,12 +43,21 @@ namespace Produtos.Infra.Extensions
         {
             services.AddMediatR(typeof(AdcionarMarcaCommand));
             services.AddMediatR(typeof(AdcionarProdutoCommand));
+            services.AddMediatR(typeof(AdicionarPrePreparoCommand));
 
             services.AddMediatR(typeof(ObterMarcaPorIdQuery));
             services.AddMediatR(typeof(ObterTodasAsMarcasQuery));
             services.AddMediatR(typeof(ObterProdutoPorIdQuery));
             services.AddMediatR(typeof(ObterProdutosPorMarcaQuery));
             services.AddMediatR(typeof(ObterTodosOsProdutosQuery));
+        }
+        public static void AddRedisCache(this IServiceCollection services, string hostName,string instanceName)
+        {
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = hostName;
+                options.InstanceName = instanceName;
+            });
         }
 
         [Obsolete]

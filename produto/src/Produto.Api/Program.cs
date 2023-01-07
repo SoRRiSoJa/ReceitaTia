@@ -16,6 +16,8 @@ builder.Services.AddMediatRApi();
 builder.Services.AddValidators();
 builder.Services.AddAutoMapperApi(typeof(MarcaMapper));
 builder.Services.AddAutoMapperApi(typeof(ProdutoMapper));
+builder.Services.AddAutoMapperApi(typeof(PrePreparoMapper));
+builder.Services.AddRedisCache(builder.Configuration["ConnectionStrings:Redis:Host"], builder.Configuration["ConnectionStrings:Redis:Instance"]);
 
 var app = builder.Build();
 

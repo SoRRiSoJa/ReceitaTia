@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Produto.Application.Commands.Marca;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using Produto.Application.Commands.PrePreparoCommands;
 using Produto.Application.DTOs;
-using Produto.Application.Queries.MarcaQueries;
-using Produtos.Domain.Entities;
-using Produtos.Domain.Enums;
-using Produtos.Domain.Repositories;
+using Produto.Application.Queries.PrePreparoQueries;
 
 namespace Produtos.Api.Controllers
 {
@@ -12,19 +10,18 @@ namespace Produtos.Api.Controllers
     [Route("[controller]")]
     public class PrePreparoController : ControllerBase
     {
-        private readonly IPrePreparoRepository _prePreparoRepository;
-        public PrePreparoController(IPrePreparoRepository _prePreparoRepository)
+        private readonly IMediator _mediator;
+        public PrePreparoController(IMediator _mediator)
         {
-            this._prePreparoRepository = _prePreparoRepository ?? throw new ArgumentNullException(nameof(_prePreparoRepository));
+            this._mediator = _mediator ?? throw new ArgumentNullException(nameof(_mediator));
         }
         [HttpPost]
-        public async Task<Guid> Inserir([FromBody] AdcionarMarcaCommand marca)
+        public async Task<Guid> Inserir([FromBody] AdicionarPrePreparoCommand prePreparo)
         {
-            
-            return Guid.Empty;
+            return await _mediator.Send(prePreparo);
         }
         [HttpGet]
-        public async Task<IEnumerable<PrePreparo>> ListarTodos()
+        public async Task<IEnumerable<PrePreparosDto>> ListarTodos()
         {
             //var brigadeiroPrePreparo = new PrePreparo() {PrePreparoId=Guid.NewGuid(),ProdutoId=new Guid("39b22a52-bdc6-4198-9d26-e144691639ab"),Rendimento=180, };
             //var listaProdutos = new List<ProdutoPrePreparo>() 
@@ -35,12 +32,13 @@ namespace Produtos.Api.Controllers
             //};
             //brigadeiroPrePreparo.Produtos = listaProdutos;
             //var prepreparoId=await _prePreparoRepository.Inserir(brigadeiroPrePreparo);
-            return await _prePreparoRepository.ObterTodos(null);
+            return await _mediator.Send(new ObterTodosPrePreparosQuery());
+
         }
         [HttpGet("{id}")]
-        public async Task<PrePreparo> Obter(Guid id)
+        public async Task<PrePreparosDto> Obter(Guid id)
         {
-            return await _prePreparoRepository.Obter(id);
+            return null;
         }
     }
 }

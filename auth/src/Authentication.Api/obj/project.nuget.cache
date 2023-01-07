@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "P/6oXAFWr0S0QhB2HTGUrcwAOYA2E5wm58mK1cjOJt9eKU4fHiE3+2/jWUtM4wnOYrxw0Zu2s6yCOC5p1u5i7Q==",
+  "success": true,
+  "projectFilePath": "C:\\ReceitaTia\\auth\\src\\Authentication.Api\\Authentication.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\João André Martins\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.1\\microsoft.aspnetcore.openapi.7.0.1.nupkg.sha512",
+    "C:\\Users\\João André Martins\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\João André Martins\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\João André Martins\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\João André Martins\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\João André Martins\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\João André Martins\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
