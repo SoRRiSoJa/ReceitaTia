@@ -1,7 +1,6 @@
 ﻿using authentication.Application.Exceptions;
 using authentication.Application.Util;
 using authentication.Domain.Repositories;
-using AutoMapper;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using System.Security.Cryptography;
