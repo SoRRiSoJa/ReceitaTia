@@ -20,6 +20,7 @@
     <Folder Include="Abstractions\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Authentication.Application\authentication.Application.csproj" />
     <ProjectReference Include="..\Authentication.Domain\authentication.Domain.csproj" />
   </ItemGroup>
 

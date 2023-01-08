@@ -24,20 +24,14 @@ namespace authentication.Application.Util
             return sb.ToString();
         }
 
-        public bool CheckPassword(string senhaDigitada, string userPassword)
+        public bool CheckPassword(string inputPassword, string userPassword,string userSalt)
         {
             if (string.IsNullOrEmpty(userPassword))
                 throw new NullReferenceException("No user password informed!");
 
-            var encryptedPassword = _hashAlgorithm.ComputeHash(Encoding.UTF8.GetBytes(senhaDigitada));
-
-            var sb = new StringBuilder();
-            foreach (var caractere in encryptedPassword)
-            {
-                sb.Append(caractere.ToString("X2"));
-            }
-
-            return sb.ToString() == userPassword;
+            var encryptedPassword = GetPasswordHash($"{userPassword}{userSalt}");
+            
+            return encryptedPassword.Equals(userPassword);
         }
     }
 }
