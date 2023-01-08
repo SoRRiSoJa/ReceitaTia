@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "hjQpOlmBAe7jBbc4Czmtg+77D8ZZy9ZUQkMB5NtRRHDWvfgnoornp+JJ7QpiVyWY/lnsN5Xh+wo5A28vf3KdmQ==",
+  "dgSpecHash": "1mr5xfzFOtNBDJEQ9rF189OoEu08bcErBlbIrWIKmWQkukZB4i4+QeUHPdm23mBO/6QMzxnAXpRuaKhjgIgU4g==",
   "success": true,
   "projectFilePath": "C:\\ReceitaTia\\auth\\src\\Authentication.Infra\\authentication.Infra.csproj",
   "expectedPackageFiles": [
