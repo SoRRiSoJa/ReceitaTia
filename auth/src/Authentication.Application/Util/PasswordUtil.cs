@@ -5,7 +5,7 @@ namespace authentication.Application.Util
 {
     public class PasswordUtil
     {
-        private HashAlgorithm _hashAlgorithm;
+        private readonly HashAlgorithm _hashAlgorithm;
         public PasswordUtil(HashAlgorithm _hashAlgorithm)
         {
             this._hashAlgorithm = _hashAlgorithm ?? throw new ArgumentNullException(nameof(_hashAlgorithm));
@@ -29,7 +29,7 @@ namespace authentication.Application.Util
             if (string.IsNullOrEmpty(userPassword))
                 throw new NullReferenceException("No user password informed!");
 
-            var encryptedPassword = GetPasswordHash($"{userPassword}{userSalt}");
+            var encryptedPassword = GetPasswordHash($"{inputPassword}{userSalt}");
 
             return encryptedPassword.Equals(userPassword);
         }
