@@ -16,6 +16,8 @@ namespace authentication.Application.Util
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
+                    new Claim(ClaimTypes.Hash, user.UserId.ToString()),
+                    new Claim(ClaimTypes.Email, user.Login.ToString()),
                     new Claim(ClaimTypes.Name, user.Username.ToString()),
                     new Claim(ClaimTypes.Role, user.Role.ToString())
                 }),

@@ -10,7 +10,7 @@ namespace authentication.Infra.Mappers
             ToTable("users");
             Map((user) => (user).UserId).ToColumn("userid").IsKey();
             Map((user) => (user).Username).ToColumn("username");
-            Map((user) => (user).Login).ToColumn("login");
+            Map((user) => (user).Login).ToColumn("userlogin");
             Map((user) => (user).Password).ToColumn("userpassword");
             Map((user) => (user).Role).ToColumn("userrole");
             Map((user) => (user).CreationDate).ToColumn("creationdate");

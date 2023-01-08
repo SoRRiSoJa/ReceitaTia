@@ -1,4 +1,5 @@
 
+using authentication.Infra.Config;
 using authentication.Infra.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,7 +16,7 @@ builder.Services.AddDbSession();
 builder.Services.AddRepositories();
 builder.Services.AddMediatRApi();
 builder.Services.AddMappers();
-
+RegisterMapping.Register();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

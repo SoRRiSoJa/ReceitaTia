@@ -32,21 +32,21 @@ namespace authentication.Infra.Repositories
 
         public async Task<User> Get(Guid id)
         {
-            var query = @"SELECT * FROM user u WHERE u.login = @login";
+            var query = @"SELECT * FROM users u WHERE u.userid = @id";
             var result = await _session.Connection.QueryFirstOrDefaultAsync<User>(query, new { id });
             return result;
         }
 
         public async Task<IEnumerable<User>> GetAll()
         {
-            var query = @"SELECT * FROM user";
+            var query = @"SELECT * FROM users";
             var result = await _session.Connection.QueryAsync<User>(query);
             return result;
         }
 
         public async Task<User> GetByLogin(string login)
         {
-            var query = @"SELECT * FROM user u WHERE u.login = @login";
+            var query = @"SELECT * FROM users u WHERE u.userlogin = @login";
             var result = await _session.Connection.QueryFirstOrDefaultAsync<User>(query, new { login });
             return result;
         }
