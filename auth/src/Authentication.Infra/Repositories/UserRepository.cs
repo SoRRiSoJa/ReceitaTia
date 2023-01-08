@@ -8,7 +8,7 @@ namespace authentication.Infra.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly DbSession _session;
-        public UserRepository(DbSession session)
+        public UserRepository(DbSession _session)
         {
             this._session = _session ?? throw new ArgumentNullException(nameof(_session));
         }
@@ -16,7 +16,7 @@ namespace authentication.Infra.Repositories
         {
             var query = @"INSERT INTO public.users (userid, username, login, userpassword, userrole, creationdate, deleted, salt) VALUES(@userid, @username, @login, @userpassword, @userrole, @creationdate, @deleted, @salt);";
             var userId = Guid.NewGuid();
-            var rows = await _session.Connection.ExecuteAsync(query, new { UserId = userId, user.Username, user.Login, user.Password, user.Role, DateTime.Now, Deleted = false, user.Salt });
+            var rows = await _session.Connection.ExecuteAsync(query, new { UserId = userId, user.Username, user.Login, userpassword=user.Password, userrole=user.Role, creationdate=DateTime.Now, Deleted = false, user.Salt });
             return rows > 0 ? userId : Guid.Empty;
         }
 

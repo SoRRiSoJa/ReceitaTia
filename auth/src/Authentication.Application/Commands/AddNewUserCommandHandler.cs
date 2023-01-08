@@ -13,7 +13,7 @@ namespace authentication.Application.Commands
         private readonly HashAlgorithm _hashAlgorithm = SHA512.Create();
         private readonly PasswordUtil _passwordUtil;
         private readonly IMapper _mapper;
-        public AddNewUserCommandHandler(IUserRepository _userRepository, PasswordUtil _passwordUtil, IMapper _mapper)
+        public AddNewUserCommandHandler(IUserRepository _userRepository, IMapper _mapper)
         {
             this._mapper = _mapper ?? throw new ArgumentNullException(nameof(_mapper));
             this._userRepository = _userRepository ?? throw new ArgumentNullException(nameof(_userRepository));
