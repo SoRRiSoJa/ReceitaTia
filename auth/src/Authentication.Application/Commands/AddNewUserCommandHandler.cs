@@ -10,7 +10,7 @@ namespace authentication.Application.Commands
     internal class AddNewUserCommandHandler : IRequestHandler<AddNewUserCommand, Guid>
     {
         private readonly IUserRepository _userRepository;
-        private readonly HashAlgorithm _hashAlgorithm =  SHA512.Create();
+        private readonly HashAlgorithm _hashAlgorithm = SHA512.Create();
         private readonly PasswordUtil _passwordUtil;
         private readonly IMapper _mapper;
         public AddNewUserCommandHandler(IUserRepository _userRepository, PasswordUtil _passwordUtil, IMapper _mapper)
@@ -24,7 +24,7 @@ namespace authentication.Application.Commands
             var user = _mapper.Map<User>(request);
             user.SetSalt(_passwordUtil);
             user.SetPassword(request.Password, _passwordUtil);
-            var userId=_userRepository.Add(user);
+            var userId = _userRepository.Add(user);
             return userId;
         }
     }

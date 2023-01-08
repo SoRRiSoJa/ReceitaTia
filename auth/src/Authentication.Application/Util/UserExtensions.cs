@@ -1,5 +1,4 @@
 ﻿using authentication.Domain.Entities;
-using MediatR;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -9,7 +8,7 @@ namespace authentication.Application.Util
 {
     public static class UserExtensions
     {
-        public static string GenerateToken(this User user,string secret)
+        public static string GenerateToken(this User user, string secret)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(secret);
@@ -26,11 +25,11 @@ namespace authentication.Application.Util
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
-        public static void SetSalt(this User user,PasswordUtil passwordUtil) 
+        public static void SetSalt(this User user, PasswordUtil passwordUtil)
         {
             user.Salt = passwordUtil.GetPasswordHash(Guid.NewGuid().ToString());
         }
-        public static void SetPassword(this User user,string password, PasswordUtil passwordUtil)
+        public static void SetPassword(this User user, string password, PasswordUtil passwordUtil)
         {
             user.Password = passwordUtil.GetPasswordHash($"{password}{user.Salt}");
         }

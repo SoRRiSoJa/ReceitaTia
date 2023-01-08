@@ -8,7 +8,7 @@ namespace authentication.Application.Util
         private HashAlgorithm _hashAlgorithm;
         public PasswordUtil(HashAlgorithm _hashAlgorithm)
         {
-            this._hashAlgorithm= _hashAlgorithm ?? throw new ArgumentNullException(nameof(_hashAlgorithm));
+            this._hashAlgorithm = _hashAlgorithm ?? throw new ArgumentNullException(nameof(_hashAlgorithm));
         }
         public string GetPasswordHash(string password)
         {
@@ -24,13 +24,13 @@ namespace authentication.Application.Util
             return sb.ToString();
         }
 
-        public bool CheckPassword(string inputPassword, string userPassword,string userSalt)
+        public bool CheckPassword(string inputPassword, string userPassword, string userSalt)
         {
             if (string.IsNullOrEmpty(userPassword))
                 throw new NullReferenceException("No user password informed!");
 
             var encryptedPassword = GetPasswordHash($"{userPassword}{userSalt}");
-            
+
             return encryptedPassword.Equals(userPassword);
         }
     }
